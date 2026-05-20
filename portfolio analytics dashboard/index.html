@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Analytics Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">📊 PortfolioIQ</div>
+    <nav>
+      <a href="#" class="nav-item active" onclick="showSection('dashboard')">🏠 Dashboard</a>
+      <a href="#" class="nav-item" onclick="showSection('stocks')">📈 Stocks</a>
+      <a href="#" class="nav-item" onclick="showSection('mutual')">💰 Mutual Funds</a>
+      <a href="#" class="nav-item" onclick="showSection('reports')">📋 Reports</a>
+    </nav>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <h1 id="pageTitle">Dashboard</h1>
+      <div class="user">👤 Krushna Kolkar</div>
+    </div>
+
+    <div id="dashboard" class="section active">
+      <div class="cards">
+        <div class="card green">
+          <h3>Total Portfolio Value</h3>
+          <p>₹12,45,320</p>
+          <span>↑ 8.2% this month</span>
+        </div>
+        <div class="card blue">
+          <h3>Total Invested</h3>
+          <p>₹10,00,000</p>
+          <span>Across 12 assets</span>
+        </div>
+        <div class="card orange">
+          <h3>Total Returns</h3>
+          <p>₹2,45,320</p>
+          <span>↑ 24.5% overall</span>
+        </div>
+        <div class="card red">
+          <h3>Today's P&L</h3>
+          <p>₹3,240</p>
+          <span>↑ 0.26% today</span>
+        </div>
+      </div>
+      <div class="charts">
+        <div class="chart-box">
+          <h3>Portfolio Performance</h3>
+          <canvas id="lineChart"></canvas>
+        </div>
+        <div class="chart-box">
+          <h3>Asset Allocation</h3>
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-box full">
+        <h3>Monthly Returns</h3>
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+
+    <div id="stocks" class="section">
+      <div class="table-box">
+        <h3>Stock Holdings</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Stock</th><th>Qty</th><th>Buy Price</th>
+              <th>Current Price</th><th>P&L</th><th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>RELIANCE</td><td>10</td><td>₹2,400</td><td>₹2,850</td><td class="profit">+₹4,500</td><td><span class="badge green">Profit</span></td></tr>
+            <tr><td>TCS</td><td>5</td><td>₹3,200</td><td>₹3,650</td><td class="profit">+₹2,250</td><td><span class="badge green">Profit</span></td></tr>
+            <tr><td>HDFC BANK</td><td>15</td><td>₹1,600</td><td>₹1,480</td><td class="loss">-₹1,800</td><td><span class="badge red">Loss</span></td></tr>
+            <tr><td>INFOSYS</td><td>8</td><td>₹1,450</td><td>₹1,620</td><td class="profit">+₹1,360</td><td><span class="badge green">Profit</span></td></tr>
+            <tr><td>WIPRO</td><td>20</td><td>₹420</td><td>₹390</td><td class="loss">-₹600</td><td><span class="badge red">Loss</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="mutual" class="section">
+      <div class="table-box">
+        <h3>Mutual Fund Holdings</h3>
+        <table>
+          <thead>
+            <tr><th>Fund Name</th><th>Type</th><th>Invested</th><th>Current Value</th><th>Returns</th><th>XIRR</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Axis Bluechip Fund</td><td>Equity</td><td>₹50,000</td><td>₹68,000</td><td class="profit">+₹18,000</td><td>14.2%</td></tr>
+            <tr><td>SBI Small Cap Fund</td><td>Equity</td><td>₹30,000</td><td>₹45,000</td><td class="profit">+₹15,000</td><td>18.5%</td></tr>
+            <tr><td>HDFC Liquid Fund</td><td>Debt</td><td>₹1,00,000</td><td>₹1,07,000</td><td class="profit">+₹7,000</td><td>7.0%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="reports" class="section">
+      <div class="cards">
+        <div class="card blue"><h3>Capital Gains</h3><p>₹1,85,320</p><span>FY 2025-26</span></div>
+        <div class="card green"><h3>Dividend Income</h3><p>₹12,400</p><span>FY 2025-26</span></div>
+        <div class="card orange"><h3>Tax Liability</h3><p>₹18,532</p><span>Estimated</span></div>
+      </div>
+      <div class="table-box" style="margin-top:20px">
+        <h3>Transaction History</h3>
+        <table>
+          <thead>
+            <tr><th>Date</th><th>Asset</th><th>Type</th><th>Amount</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>18-05-2026</td><td>RELIANCE</td><td>BUY</td><td>₹28,500</td><td><span class="badge green">Complete</span></td></tr>
+            <tr><td>15-05-2026</td><td>Axis Bluechip</td><td>SIP</td><td>₹5,000</td><td><span class="badge green">Complete</span></td></tr>
+            <tr><td>10-05-2026</td><td>WIPRO</td><td>SELL</td><td>₹7,800</td><td><span class="badge red">Loss</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
